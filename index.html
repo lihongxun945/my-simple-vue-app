@@ -8,13 +8,30 @@
 <body>
   <div id="app"></div>
   <script>
+    Vue.component('current-time', {
+      data () {
+        return {
+          time: new Date()
+        }
+      },
+      template: `<strong>{{time}}</strong>`
+    })
     var app = new Vue({
       el: '#app',
-      template: `
-      <div class="hello">{{message}}</div>
-      `,
+      template: 
+      '<div class="hello" @click="click">' +
+        '<span>{{message}}</span>'+
+        '<p>a paragraph</p>'+
+        '<current-time></current-time>'+
+      '</div>'
+      ,
       data: {
         message: 'Hello Vue!'
+      },
+      methods: {
+        click() {
+          this.message += '1'
+        }
       }
     })
   </script>
